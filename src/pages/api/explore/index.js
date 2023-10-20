@@ -12,7 +12,6 @@ async function FetchTrefle(req, res) {
       if (req.body.nextPage !== undefined) {
         const nextPage = req.body.nextPage;
         const response = await fetch(`https://trefle.io${nextPage}&${Trefle_API_KEY}`);
-        console.log(response);
         const data = await response.json();
         res.status(200).json(data);
       } else if (req.body.newSearchQuery.includes('q=') === true) {
