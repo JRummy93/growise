@@ -15,11 +15,7 @@ const PlantCard = ({ common_name, scientific_name, image_url, id }) => {
 
   return (
     <Card sx={{ maxWidth: 500, maxHeight: 500 }} key={id}>
-      <CardActionArea
-        // onClick={() => {
-        //   router.push(`/explore/${id}`);
-        // }}
-      >
+      <CardActionArea>
         <CardMedia
           component="img"
           height="300"

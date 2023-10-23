@@ -6,7 +6,7 @@ import { Container, Stack, Typography, Box } from "@mui/material";
 import { Image } from "next/image";
 
 const PlantDetailPage = () => {
-  const [Plant, setPlant] = useState({});
+  const [plant, setPlant] = useState({});
   const router = useRouter();
 
   useEffect(() => {
@@ -38,27 +38,30 @@ const PlantDetailPage = () => {
             Plant Details
           </Typography>
           <hr className="bar" />
-          {Plant.data && (
+          {plant.data && (
             <>
-              <Typography variant="h3">{Plant.data.common_name}</Typography>
+              <Typography variant="h3">{plant.data.common_name}</Typography>
               <Typography variant="h4" color={"#446652"}>
-                {Plant.data.scientific_name}
+                {plant.data.scientific_name}
               </Typography>
               <Typography variant="p" color={"#446652"}>
-                ID#: {Plant.data.id}
+                ID#: {plant.data.id}
               </Typography>
               <Stack direction={"row"}>
-                <Image
-                  src={Plant.data.image_url}
-                  alt="default plant image"
-                  style={{ width: "50%", height: "50%" }}
-                ></Image>
+                <img src={plant.data.image_url ? plant.data.image_url : "../../../public/GroWiseLogo.png"} alt="image of {plant.data.common_name}" />
+                {/* <Image
+                  src={plant.data.image_url ? plant.data.image_url : "../../../public/GroWiseLogo.png"}
+                  alt="image of {plant.data.common_name}"
+                  width={300}
+                  height={300}
+                  placeholder="blur"
+                ></Image> */}
                 <div className="idDetailsDiv">
                   <Typography variant="h5">
-                    <u>Family:</u> {Plant.data.main_species.family_common_name ? Plant.data.main_species.family_common_name : "Not Available"}
+                    <u>Family:</u> {plant.data.main_species.family_common_name ? plant.data.main_species.family_common_name : "Not Available"}
                   </Typography>
                   <Typography variant="h5">
-                    <u>Genus:</u> {Plant.data.main_species.genus}
+                    <u>Genus:</u> {plant.data.main_species.genus}
                   </Typography>
                 </div>
               </Stack>
