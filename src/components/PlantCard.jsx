@@ -19,12 +19,12 @@ const PlantCard = ({ common_name, scientific_name, image_url, id }) => {
         <CardMedia
           component="img"
           height="300"
-          image={image_url}
+          image={image_url ? image_url : "/favicon.ico"}
           alt="default plant image"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {common_name}
+            {common_name ? common_name : scientific_name}
           </Typography>
         </CardContent>
       </CardActionArea>
