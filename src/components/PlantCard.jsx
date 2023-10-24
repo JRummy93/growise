@@ -15,7 +15,7 @@ const PlantCard = ({ common_name, scientific_name, image_url, id }) => {
 
   return (
     <Card sx={{ maxWidth: 500, maxHeight: 500 }} key={id}>
-      <CardActionArea>
+      <CardActionArea onClick={() => router.push(`/explore/${id}`)}>
         <CardMedia
           component="img"
           height="300"
@@ -28,7 +28,7 @@ const PlantCard = ({ common_name, scientific_name, image_url, id }) => {
           </Typography>
         </CardContent>
       </CardActionArea>
-      {/* <CardActions>
+      <CardActions sx={{ display: "flex", justifyContent: "flex-end" }}>
         {userId ? (
           <Button
             className="addBtn"
@@ -37,6 +37,7 @@ const PlantCard = ({ common_name, scientific_name, image_url, id }) => {
               padding: "0.5rem 1rem",
               fontFamily: "Montserrat, sans-serif",
               color: "primary",
+              border: "1px solid #446652",
             }}
           >
             Add to My Garden
@@ -50,13 +51,14 @@ const PlantCard = ({ common_name, scientific_name, image_url, id }) => {
                 padding: "0.5rem 1rem",
                 fontFamily: "Montserrat, sans-serif",
                 color: "primary",
+                border: "1px solid #446652",
               }}
             >
               Add to My Garden
             </Button>
           </SignUpButton>
         )}
-      </CardActions> */}
+      </CardActions>
     </Card>
   );
 };

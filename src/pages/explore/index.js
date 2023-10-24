@@ -12,6 +12,8 @@ import {
   Switch,
   TextField,
   Box,
+  CircularProgress,
+  LinearProgress,
 } from "@mui/material";
 import PlantCard from "@/components/PlantCard";
 import WaterRequirementsCheckList from "../../components/CheckListWater";
@@ -287,26 +289,17 @@ export default function Explore() {
             {Array.isArray(result.data) && result.data.length > 0 ? (
               result.data.map((data) => (
                 <Grid item xs={12} md={6} lg={4} key={data.id}>
-                  <Link
-                    href={{
-                      pathname: `/explore/${data.id}`,
-                      query: { id: data.id },
-                    }}
-                    className="exploreLink"
-                  >
                     <PlantCard
                       common_name={data.common_name}
                       scientific_name={data.scientific_name}
                       image_url={data.image_url}
                       key={data.id}
+                      id={data.id}
                     />
-                  </Link>
                 </Grid>
               ))
             ) : (
-              <Typography variant="h3" color={"primary.dark"}>
-                Loading...
-              </Typography>
+              <LinearProgress color="primary" sx={{ width: "100%" }} spacing={10}/>
             )}
           </Grid>
           <Button
