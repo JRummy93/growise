@@ -29,7 +29,7 @@ const PlantCard = ({ common_name, scientific_name, image_url, id }) => {
         </CardContent>
       </CardActionArea>
       <CardActions sx={{ display: "flex", justifyContent: "flex-end" }}>
-        {userId ? (
+        {userId !== null ? (
           <Button
             className="addBtn"
             size="small"
@@ -54,7 +54,7 @@ const PlantCard = ({ common_name, scientific_name, image_url, id }) => {
                 border: "1px solid #446652",
               }}
             >
-              Add to My Garden
+              Sign In to Add to My Garden
             </Button>
           </SignUpButton>
         )}
