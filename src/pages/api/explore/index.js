@@ -1,4 +1,6 @@
 const Trefle_API_KEY = 'token=u07N7SHuaI0uvGrVLkiI2zWl7PLb6ZgwGAfYE9SySnA';
+import dbConnect from "../../../server/db";
+import Plants from "../../../server/Plants";
 
 async function FetchTrefle(req, res) {
   if (req.method === 'GET') {
@@ -24,6 +26,15 @@ async function FetchTrefle(req, res) {
         const data = await response.json();
         res.status(200).json(data);
       }
+      if (req.body.addPlant !== undefined) { 
+        await dbConnect();
+        try {
+          const plant = await Plants.create(req.body);
+          res.status(201).json(plant);
+        } catch (error) {
+          res.status(500).json({ error: "Error adding plant" });
+        }
+      }
     }
   } else {
     res.status(405).json({ message: 'Method not allowed' });
@@ -32,3 +43,4 @@ async function FetchTrefle(req, res) {
 }
 
 export default FetchTrefle;
+
